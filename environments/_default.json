@@ -1,0 +1,17 @@
+{
+  "name": "_default",
+  "description": "The default branch",
+  "json_class": "Cheff:Environment",
+  "chef_type": "environment",
+  "default_attributes": {
+  },
+  "override_attributes": {
+    "storm": {
+      "download_url": "https://dl.dropboxusercontent.com/s/tqdpoif32gufapo",
+      "version": "0.9.0.1"
+    },
+    "mysql": {
+      "root_pass": "root"
+    }
+  }
+}
