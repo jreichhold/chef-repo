@@ -1,0 +1,99 @@
+### base
+java.library.path: "<%= node[:apache_storm][:java_lib_path] %>"
+storm.local.dir: "<%= node[:apache_storm][:local_dir] %>"
+storm.local.mode.zmq: <%= node[:apache_storm][:local_mode_zmq] %>
+storm.cluster.mode: "<%= node[:apache_storm][:cluster_mode] %>"
+
+
+
+### zookeeper.*
+storm.zookeeper.servers:
+<% @zookeeper_quorum.each do |host| -%>
+    - "<%= host %>"
+<% end -%>
+storm.zookeeper.port: <%= node[:apache_storm][:zookeeper][:port] %>
+storm.zookeeper.root: "<%= node[:apache_storm][:zookeeper][:root] %>"
+storm.zookeeper.session.timeout: <%= node[:apache_storm][:zookeeper][:session_timeout] %>
+storm.zookeeper.retry.times: <%= node[:apache_storm][:zookeeper][:retry_times] %>
+storm.zookeeper.retry.interval: <%= node[:apache_storm][:zookeeper][:retry_interval] %>
+
+
+
+### supervisor.* configs are for node supervisors
+supervisor.slots.ports:
+<% for i in 0..(node[:apache_storm][:supervisor][:workers]-1) -%>
+    - <%= 6700+i -%>
+
+<% end -%>
+supervisor.childopts: "<%= node[:apache_storm][:supervisor][:childopts] %>"
+supervisor.worker.start.timeout.secs: <%= node[:apache_storm][:supervisor][:worker_start_timeout] %>
+supervisor.worker.timeout.secs: <%= node[:apache_storm][:supervisor][:worker_timeout_secs] %>
+supervisor.monitor.frequency.secs: <%= node[:apache_storm][:supervisor][:monitor_frequecy_secs] %>
+supervisor.heartbeat.frequency.secs: <%= node[:apache_storm][:supervisor][:heartbeat_frequency_secs] %>
+supervisor.enable: <%= node[:apache_storm][:supervisor][:enable] %>
+
+
+
+### worker.* configs are for task workers
+worker.childopts: "<%= node[:apache_storm][:worker][:childopts] %>"
+worker.heartbeat.frequency.secs: <%= node[:apache_storm][:worker][:heartbeat_frequency_secs] %>
+task.heartbeat.frequency.secs: <%= node[:apache_storm][:task][:heartbeat_frequency_secs] %>
+task.refresh.poll.secs: <%= node[:apache_storm][:task][:refresh_poll_secs] %>
+zmq.threads: <%= node[:apache_storm][:zmq][:threads] %>
+zmq.linger.millis: <%= node[:apache_storm][:zmq][:longer_millis] %>
+
+
+
+### nimbus.* configs are for the master
+nimbus.host: "<%= @nimbus[:fqdn] %>"
+nimbus.thrift.port: <%= node[:apache_storm][:nimbus][:thrift_port] %>
+nimbus.childopts: "<%= node[:apache_storm][:nimbus][:childopts] %>"
+nimbus.task.timeout.secs: <%= node[:apache_storm][:nimbus][:task_timeout_secs] %>
+nimbus.supervisor.timeout.secs: <%= node[:apache_storm][:nimbus][:supervisor_timeout_secs] %>
+nimbus.monitor.freq.secs: <%= node[:apache_storm][:nimbus][:monitor_freq_secs] %>
+nimbus.cleanup.inbox.freq.secs: <%= node[:apache_storm][:nimbus][:cleanup_inbox_freq_secs] %>
+nimbus.inbox.jar.expiration.secs: <%= node[:apache_storm][:nimbus][:inbox_jar_expiration_secs] %>
+nimbus.task.launch.secs: <%= node[:apache_storm][:nimbus][:task_launch_secs] %>
+nimbus.reassign: <%= node[:storm][:apache_nimbus][:reassign] %>
+nimbus.file.copy.expiration.secs: <%= node[:apache_storm][:nimbus][:file_copy_expiration_secs] %>
+
+
+
+### ui.* configs are for the master
+ui.port: <%= node[:apache_storm][:ui][:port] %>
+ui.childopts: "<%= node[:apache_storm][:ui][:childopts] %>"
+
+
+
+### drpc.* configs
+drpc.port: <%= node[:apache_storm][:drpc][:port] %>
+drpc.invocations.port: <%= node[:apache_storm][:drpc][:invocations_port] %>
+drpc.request.timeout.secs: <%= node[:apache_storm][:drpc][:request_timeout_secs] %>
+
+
+
+### transactional.* configs
+transactional.zookeeper.servers:
+<% @zookeeper_quorum.each do |host| -%>
+    - "<%= host %>"
+<% end -%>
+transactional.zookeeper.root: "<%= node[:apache_storm][:transactional][:zookeeper][:root] %>"
+transactional.zookeeper.port: <%= node[:apache_storm][:transactional][:zookeeper][:port] %>
+
+
+
+### topology.* configs are for specific executing storms
+topology.debug: <%= node[:apache_storm][:topology][:debug] %>
+topology.optimize: <%= node[:apache_storm][:topology][:optimize] %>
+topology.workers: <%= node[:apache_storm][:topology][:workers] %>
+topology.acker.executors: <%= node[:apache_storm][:topology][:acker_executors] %>
+topology.acker.tasks: <%= node[:apache_storm][:topology][:acker_tasks] %>
+topology.tasks: <%= node[:apache_storm][:topology][:tasks] %>
+topology.message.timeout.secs: <%= node[:apache_storm][:topology][:message_timeout_secs] %>
+topology.skip.missing.kryo.registrations: <%= node[:apache_storm][:topology][:skip_missing_kryo_registrations] %>
+topology.max.task.parallelism: <%= node[:apache_storm][:topology][:max_task_parallelism] %>
+topology.max.spout.pending: <%= node[:apache_storm][:topology][:max_spout_pending] %>
+topology.state.synchronization.timeout.secs: <%= node[:apache_storm][:topology][:state_synchronization_timeout_secs] %>
+topology.stats.sample.rate: <%= node[:apache_storm][:topology][:stats_sample_rate] %>
+topology.fall.back.on.java.serialization: <%= node[:apache_storm][:topology][:fall_back_on_java_serialization] %>
+topology.worker.childopts: <%= node[:apache_storm][:topology][:worker_childopts] %>
