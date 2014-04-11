@@ -5,14 +5,15 @@
 #
 # Copyright 2012, Webtrends Inc.
 #
-#http://www.dsgnwrld.com/am/incubator/storm/storm/apache-storm-0.9.1-incubating/apache-storm-0.9.1-incubating.tar.gz
+#http://www.dsgnwrld.com/am/incubator/storm/apache-storm-0.9.1-incubating/apache-storm-0.9.1-incubating.tar.gz
+#http://www.dsgnwrld.com/am/incubator/storm/apache-storm-0.9.1-incubating/apache-storm-0.9.1-incubating.tar.gz
 #http://www.dsgnwrld.com/am/incubator/storm/apache-storm-0.9.1-incubating/apache-storm-0.9.1-incubating.tar.gz
 
 default['apache_storm']['version'] = "0.9.1-incubating"
 default['apache_storm']['root_dir'] = "/opt/storm"
 default['apache_storm']['log_dir'] = "/var/log/storm"
 default['apache_storm']['cluster_role'] = ""
-default['apache_storm']['download_url'] = "http://www.dsgnwrld.com/am/incubator/storm/storm"
+default['apache_storm']['download_url'] = "http://www.dsgnwrld.com/am/incubator/storm"
 
 # general storm attributes
 default['apache_storm']['java_lib_path'] = "/usr/local/lib:/opt/local/lib:/usr/lib"

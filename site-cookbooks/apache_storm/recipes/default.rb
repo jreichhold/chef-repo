@@ -77,7 +77,7 @@ end
 
 # download storm
 remote_file "/home/storm/apache-storm-#{node[:storm][:version]}.tar.gz" do
-  source "#{node['apache_storm']['download_url']}/storm/apache-storm-#{node['apache_storm']['version']}/apache-storm-#{node['apache_storm']['version']}.tar.gz"
+  source "#{node['apache_storm']['download_url']}/apache-storm-#{node['apache_storm']['version']}/apache-storm-#{node['apache_storm']['version']}.tar.gz"
   owner  "storm"
   group  "storm"
   mode   00744
