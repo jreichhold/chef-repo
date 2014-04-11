@@ -16,9 +16,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe "java"
-include_recipe "zeromq"
-include_recipe "runit"
+include_recipe 'java'
+include_recipe 'zeromq'
+include_recipe 'runit'
 
 
 install_dir = "#{node['storm']['root_dir']}/storm-#{node['storm']['version']}"
