@@ -63,7 +63,7 @@ end
 end
 
 # download storm
-remote_file "/home/storm/apache-storm-#{node[:storm][:version]}.tar.gz" do
+remote_file "/home/storm/apache-storm-#{node[:apache_storm][:version]}.tar.gz" do
   source "#{node['apache_storm']['download_url']}/apache-storm-#{node['apache_storm']['version']}/apache-storm-#{node['apache_storm']['version']}.tar.gz"
   owner  "storm"
   group  "storm"
