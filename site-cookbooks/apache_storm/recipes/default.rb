@@ -21,7 +21,7 @@ include_recipe "runit"
 include_recipe "zeromq"
 
 
-install_dir = "#{node['apache_storm']['root_dir']}/apache-storm-#{node['storm']['version']}"
+install_dir = "#{node['apache_storm']['root_dir']}/apache-storm-#{node['apache_storm']['version']}"
 
 node.set['apache_storm']['lib_dir'] = "#{install_dir}/lib"
 node.set['apache_storm']['conf_dir'] = "#{install_dir}/conf"
@@ -62,12 +62,12 @@ end
 
 # storm looks for storm.yaml in ~/.storm/storm.yaml so make a link
 link "/home/storm/.storm" do
-  to node['storm']['conf_dir']
+  to node['apache_storm']['conf_dir']
 end
 
 # setup directories
 %w{conf_dir local_dir log_dir install_dir bin_dir}.each do |name|
-  directory node['storm'][name] do
+  directory node['apache_storm'][name] do
     owner "storm"
     group "storm"
     action :create
@@ -90,7 +90,7 @@ execute "tar" do
   group   "storm"
   creates node['apache_storm']['lib_dir']
   cwd     node['apache_storm']['root_dir']
-  command "tar zxvf /home/storm/apache-storm-#{node['storm']['version']}.tar.gz"
+  command "tar zxvf /home/storm/apache-storm-#{node['apache_storm']['version']}.tar.gz"
 end
 
 # create a link from the specific version to a generic current folder
