@@ -76,7 +76,7 @@ end
 end
 
 # download storm
-remote_file "#{Chef::Config[:file_cache_path]}/apache-storm-#{node[:storm][:version]}.tar.gz" do
+remote_file "/home/storm/apache-storm-#{node[:storm][:version]}.tar.gz" do
   source "#{node['apache_storm']['download_url']}/storm/apache-storm-#{node['apache_storm']['version']}/apache-storm-#{node['apache_storm']['version']}.tar.gz"
   owner  "storm"
   group  "storm"
@@ -90,7 +90,7 @@ execute "tar" do
   group   "storm"
   creates node['apache_storm']['lib_dir']
   cwd     node['apache_storm']['root_dir']
-  command "tar zxvf #{Chef::Config[:file_cache_path]}/apache-storm-#{node['storm']['version']}.tar.gz"
+  command "tar zxvf /home/storm/apache-storm-#{node['storm']['version']}.tar.gz"
 end
 
 # create a link from the specific version to a generic current folder
