@@ -1,13 +1,11 @@
 #
-# Author:: Sean McNamara (<sean.mcnamara@webtrends.com>)
-# Cookbook Name:: storm
+# Author:: Jonathan Reichhold (<jreichhold@gmail.com>)
+# Cookbook Name:: apache_storm
 # Attribute:: default
 #
-# Copyright 2012, Webtrends Inc.
+#http://www.dsgnwrld.com/am/incubator/storm/apache-storm-0.9.1-incubating/apache-storm-0.9.1-incubating.tar.gz
+#http://www.apache.org/dyn/closer.cgi/incubator/storm/apache-storm-0.9.1-incubating/apache-storm-0.9.1-incubating.tar.gz
 #
-#http://www.dsgnwrld.com/am/incubator/storm/apache-storm-0.9.1-incubating/apache-storm-0.9.1-incubating.tar.gz
-#http://www.dsgnwrld.com/am/incubator/storm/apache-storm-0.9.1-incubating/apache-storm-0.9.1-incubating.tar.gz
-#http://www.dsgnwrld.com/am/incubator/storm/apache-storm-0.9.1-incubating/apache-storm-0.9.1-incubating.tar.gz
 
 default['apache_storm']['version'] = "0.9.1-incubating"
 default['apache_storm']['root_dir'] = "/opt/storm"
