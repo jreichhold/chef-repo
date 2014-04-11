@@ -1,3 +1,6 @@
+cookbook 'storm', :path => './site-cookbooks/storm'
+cookbook 'apache_storm', :path => './site-cookbooks/apache_storm'
+
 site :opscode
 
 cookbook 'memcached',     '~> 1.3.0'
