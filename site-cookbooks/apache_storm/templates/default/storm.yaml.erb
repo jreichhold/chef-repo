@@ -3,6 +3,7 @@ java.library.path: "<%= node[:apache_storm][:java_lib_path] %>"
 storm.local.dir: "<%= node[:apache_storm][:local_dir] %>"
 storm.local.mode.zmq: <%= node[:apache_storm][:local_mode_zmq] %>
 storm.cluster.mode: "<%= node[:apache_storm][:cluster_mode] %>"
+storm.local.hostname: "<%= node[:opsworks][:instance][:hostname] %>"
 
 
 
@@ -54,7 +55,7 @@ nimbus.monitor.freq.secs: <%= node[:apache_storm][:nimbus][:monitor_freq_secs] %
 nimbus.cleanup.inbox.freq.secs: <%= node[:apache_storm][:nimbus][:cleanup_inbox_freq_secs] %>
 nimbus.inbox.jar.expiration.secs: <%= node[:apache_storm][:nimbus][:inbox_jar_expiration_secs] %>
 nimbus.task.launch.secs: <%= node[:apache_storm][:nimbus][:task_launch_secs] %>
-nimbus.reassign: <%= node[:apache_storm][:nimbus][:reassign] %>
+nimbus.reassign: <%= node[:apache_storm][:çnimbus][:reassign] %>
 nimbus.file.copy.expiration.secs: <%= node[:apache_storm][:nimbus][:file_copy_expiration_secs] %>
 
 
