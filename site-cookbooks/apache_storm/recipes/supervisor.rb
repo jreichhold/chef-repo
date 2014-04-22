@@ -25,7 +25,6 @@ java_home = node['java']['java_home']
     variables({
       :install_dir => node['apache_storm']['install_dir'],
       :log_dir => node['apache_storm']['log_dir'],
-      :java_home => java_home,
       :user => "storm"
     })
   end
