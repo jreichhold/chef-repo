@@ -36,7 +36,7 @@ default['apache_storm']['supervisor']['heartbeat_frequency_secs'] = 5
 default['apache_storm']['supervisor']['enable'] = true
 
 # worker attributes
-default['apache_storm']['worker']['childopts'] = "-Xmx1280m -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:NewSize=128m -XX:CMSInitiatingOccupancyFraction=70 -XX:-CMSConcurrentMTEnabled"
+default['apache_storm']['worker']['childopts'] = "-Xmx2048m -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:NewSize=128m -XX:CMSInitiatingOccupancyFraction=70 -XX:-CMSConcurrentMTEnabled"
 default['apache_storm']['worker']['heartbeat_frequency_secs'] = 1
 default['apache_storm']['task']['heartbeat_frequency_secs'] = 3
 default['apache_storm']['task']['refresh_poll_secs'] = 10
