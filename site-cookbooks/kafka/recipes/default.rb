@@ -115,6 +115,26 @@ execute "tar" do
   command "tar zxvf #{Chef::Config[:file_cache_path]}/#{tarball}"
 end
 
+# create a link from the specific version to a generic current folder
+link "#{install_dir}/bin" do
+	to "#{install_dir}/kafka_#{node[:kafka][:scala_version]}-#{node[:kafka][:version]}/bin"
+end
+
+# create a link from the specific version to a generic current folder
+link "#{install_dir}/libs" do
+	to "#{install_dir}/kafka_#{node[:kafka][:scala_version]}-#{node[:kafka][:version]}/libs"
+end
+
+# create a link from the specific version to a generic current folder
+link "#{install_dir}/logs" do
+	to "#{install_dir}/kafka_#{node[:kafka][:scala_version]}-#{node[:kafka][:version]}/logs"
+end
+
+# create a link from the specific version to a generic current folder
+link "#{install_dir}/config" do
+	to "#{install_dir}/kafka_#{node[:kafka][:scala_version]}-#{node[:kafka][:version]}/config"
+end
+
 template "#{install_dir}/bin/service-control" do
   source  "service-control.erb"
   owner "root"

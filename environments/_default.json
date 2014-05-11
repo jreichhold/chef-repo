@@ -21,12 +21,8 @@
     "zeromq": {
       "version": "3.2.4"
     },
-    "kafka": {
-      "broker_id": 1,
-      "broker_name": "kafka1.local"
-    },
     "zookeeper": {
-      "client_port"
+      "client_port": 2181
     }
   }
 }
