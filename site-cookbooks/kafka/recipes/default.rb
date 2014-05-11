@@ -99,7 +99,7 @@ end
 
 # pull the remote file only if we create the directory
 tarball = "kafka_#{node[:kafka][:scala_version]}-#{node[:kafka][:version]}.tgz"
-download_file = "#{node[:kafka][:version]}/#{node[:kafka][:download_url]}/#{tarball}"
+download_file = "#{node[:kafka][:download_url]}/#{node[:kafka][:version]}/#{tarball}"
 
 remote_file "#{Chef::Config[:file_cache_path]}/#{tarball}" do
   source download_file
