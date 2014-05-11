@@ -17,8 +17,9 @@
 # limitations under the License.
 
 # Install
-default[:kafka][:version] = "0.7.1"
-default[:kafka][:download_url] = nil
+default[:kafka][:version] = "0.8.1.1"
+default[:kafka][:scala_version] = "2.10"
+default[:kafka][:download_url] = "http://www.eng.lsu.edu/mirrors/apache/kafka/"
 default[:kafka][:checksum] = "ee845b947b00d6d83f51a93e6ff748bb03e5945e4f3f12a77534f55ab90cb2a8"
 
 default[:kafka][:install_dir] = "/opt/kafka"
