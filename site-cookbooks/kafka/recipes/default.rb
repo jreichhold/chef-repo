@@ -63,21 +63,21 @@ directory "#{install_dir}" do
   action :create
 end
 
-directory "#{install_dir}/bin" do
-  owner "root"
-  group "root"
-  mode 00755
-  recursive true
-  action :create
-end
+#directory "#{install_dir}/bin" do
+#  owner "root"
+#  group "root"
+#  mode 00755
+#  recursive true
+#  action :create
+#end
 
-directory "#{install_dir}/config" do
-  owner "root"
-  group "root"
-  mode 00755
-  recursive true
-  action :create
-end
+#directory "#{install_dir}/config" do
+#  owner "root"
+#  group "root"
+#  mode 00755
+#  recursive true
+#  action :create
+#end
 
 # create the log directory
 directory node[:kafka][:log_dir] do
