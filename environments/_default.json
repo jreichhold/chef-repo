@@ -8,10 +8,22 @@
   "override_attributes": {
     "storm": {
       "download_url": "https://dl.dropboxusercontent.com/s/tqdpoif32gufapo",
-      "version": "0.9.0.1"
+      "version": "0.9.0.1",
+      "cluster_role": "events"
     },
     "mysql": {
       "root_pass": "root"
+    }
+    "apache_storm": {
+      "version": "0.9.1-incubating",
+      "cluster_role": "events"
+    },
+    "zeromq": {
+      "version": "3.2.4"
+    },
+    "kafka": {
+      "broker_id": 1,
+      "broker_name": "kafka1.local"
     }
   }
 }
