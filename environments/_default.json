@@ -6,6 +6,7 @@
   "default_attributes": {
   },
   "override_attributes": {
+    "chef_environment": "production",
     "storm": {
       "download_url": "https://dl.dropboxusercontent.com/s/tqdpoif32gufapo",
       "version": "0.9.0.1",
