@@ -25,13 +25,13 @@
 broker.list=0:localhost:9092
 
 # discover brokers from ZK
-#zk.connect=
+#zookeeper.connect=
 
 # zookeeper session timeout; default is 6000
-#zk.sessiontimeout.ms=
+#zookeeeper.sessiontimeout.ms=
 
 # the max time that the client waits to establish a connection to zookeeper; default is 6000
-#zk.connectiontimeout.ms
+#zookeeeper.connectiontimeout.ms
 
 # name of the partitioner class for partitioning events; default partition spreads data randomly
 #partitioner.class=
@@ -53,10 +53,10 @@ serializer.class=kafka.serializer.StringEncoder
 
 
 ############################# Async Producer #############################
-# maximum time, in milliseconds, for buffering data on the producer queue 
+# maximum time, in milliseconds, for buffering data on the producer queue
 #queue.time=
 
-# the maximum size of the blocking queue for buffering on the producer 
+# the maximum size of the blocking queue for buffering on the producer
 #queue.size=
 
 # Timeout for event enqueue:
@@ -65,18 +65,17 @@ serializer.class=kafka.serializer.StringEncoder
 # +ve: enqueue will block up to this many milliseconds if the queue is full
 #queue.enqueueTimeout.ms=
 
-# the number of messages batched at the producer 
+# the number of messages batched at the producer
 #batch.size=
 
-# the callback handler for one or multiple events 
+# the callback handler for one or multiple events
 #callback.handler=
 
-# properties required to initialize the callback handler 
+# properties required to initialize the callback handler
 #callback.handler.props=
 
-# the handler for events 
+# the handler for events
 #event.handler=
 
-# properties required to initialize the event handler 
+# properties required to initialize the event handler
 #event.handler.props=
-

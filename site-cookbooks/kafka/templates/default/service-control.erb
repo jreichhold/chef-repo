@@ -4,15 +4,20 @@
 MAIN="<%=@java_class%>"
 LOG_OUT="<%=File.join(@log_dir,"process.out")%>"
 LOG_ERR="<%=File.join(@log_dir,"process.err")%>"
+GC_OUT=<%=File.join(@log_dir,"gc.log")%>
 HOME_DIR="<%=@install_dir%>"
 JAVA_HOME="<%=@java_home%>"
 SERVER_CONFIG="<%=@install_dir%>/config/server.properties"
+KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:<%=@install_dir%>/config/log4j.properties"
+KAFKA_HEAP_OPTS="-Xmx1G -Xms1G"
+
+EXTRA_ARGS="-name kafkaServer -loggc"
 
 # Setup classpath, initially empty.
 CP=""
 
 # Add all .jar files to the classpath.
-for jar in `ls $HOME_DIR/lib/*`; do
+for jar in `ls $HOME_DIR/libs/*`; do
     if [ "" = "$CP" ]; then
         CP=$jar
     else
@@ -33,8 +38,9 @@ fi
 # Add JMX options and port together.
 JMX_OPTS="$JMX_OPTS -Dcom.sun.management.jmxremote.port=$JMX_PORT "
 
+LOGGC_OPT="loggc:$GC_OUT -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps"
 if [ -z "$KAFKA_OPTS" ]; then
-  KAFKA_OPTS="-Xmx512M -server -Djava.net.preferIPv4Stack=true -Dlog4j.configuration=file:$HOME_DIR/config/log4j.properties"
+  KAFKA_OPTS="$KAFKA_HEAP_OPTS -server -Djava.net.preferIPv4Stack=true $KAFKA_LOG4J_OPTS $LOGGC_OPT"
 fi
 
 if [ -z "$JAVA_HOME" ]; then
@@ -55,11 +61,11 @@ case "$1" in
         if [ "" = "$FOUND_PID" ]; then
             cd   $HOME_DIR
             echo $CMD $MAIN $SERVER_CONFIG
-            # For compatibility with runit we cannot backgroud 
+            # For compatibility with runit we cannot backgroud
             # ourselves with a '&' at the end, though we do
             # need to exec.
             exec $CMD $MAIN $SERVER_CONFIG >$LOG_OUT 2>$LOG_ERR
-        else 
+        else
             echo "Service already running"
             exit 1
         fi
@@ -78,7 +84,7 @@ case "$1" in
                 kill -9 $FOUND_PID
             fi
             exit 0
-        fi 
+        fi
         ;;
     status)
         # Status is found via actual running processes, rather than
