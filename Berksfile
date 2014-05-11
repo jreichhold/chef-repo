@@ -1,5 +1,6 @@
 cookbook 'storm', :path => './site-cookbooks/storm'
 cookbook 'apache_storm', :path => './site-cookbooks/apache_storm'
+cookbook 'kafka', :path => './site-cookbooks/kafka'
 
 site :opscode
 
