@@ -11,7 +11,7 @@ SERVER_CONFIG="<%=@install_dir%>/config/server.properties"
 KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:<%=@install_dir%>/config/log4j.properties"
 KAFKA_HEAP_OPTS="-Xmx1G -Xms1G"
 
-EXTRA_ARGS="-name kafkaServer -loggc"
+EXTRA_ARGS="-name kafkaServer"
 
 # Setup classpath, initially empty.
 CP=""
@@ -38,7 +38,7 @@ fi
 # Add JMX options and port together.
 JMX_OPTS="$JMX_OPTS -Dcom.sun.management.jmxremote.port=$JMX_PORT "
 
-LOGGC_OPT="loggc:$GC_OUT -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps"
+LOGGC_OPT="-Xloggc:$GC_OUT -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps"
 if [ -z "$KAFKA_OPTS" ]; then
   KAFKA_OPTS="$KAFKA_HEAP_OPTS -server -Djava.net.preferIPv4Stack=true $KAFKA_LOG4J_OPTS $LOGGC_OPT"
 fi
