@@ -21,15 +21,7 @@
 
 # The id of the broker. This must be set to a unique integer for each broker.
 broker.id=<%=node["kafka"]["broker_id"]%>
-
-# Hostname the broker will advertise to consumers. If not set, kafka will use the value returned
-# from InetAddress.getLocalHost().  If there are multiple interfaces getLocalHost
-# may not be what you want.
-<% if node[:kafka][:broker_host_name].nil? || node[:kafka][:broker_host_name].empty? %>
-#hostname
-<% else %>
-hostname=<%=node[:kafka][:broker_host_name]%>
-<% end %>
+host.name=<%= node[:opsworks][:instance][:hostname] %>
 
 ############################# Socket Server Settings #############################
 
