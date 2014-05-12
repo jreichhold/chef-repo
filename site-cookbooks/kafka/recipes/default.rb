@@ -26,10 +26,11 @@ java_home   = node['java']['java_home']
 user = node[:kafka][:user]
 group = node[:kafka][:group]
 
-if node[:kafka][:broker_id].nil?
+if node[:kafka][:brokers].nil? || node[:kafka][:brokers].empty?
 		node.default[:kafka][:broker_id] = node[:ipaddress].gsub(".","")
 else
 	  node.default[:kafka][:broker_id] = (node[:kafka][:brokers].index{|broker| broker == node[:fqdn] || broker == node[:ipaddress] || broker == node[:hostname]} ) + 1
+end
 
 if node[:kafka][:broker_host_name].nil? || node[:kafka][:broker_host_name].empty?
 		node.default[:kafka][:broker_host_name] = node[:fqdn]
